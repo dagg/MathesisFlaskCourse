@@ -1,0 +1,42 @@
+[
+    {
+        "Title": "The Hobbit",
+        "Author": "J. R. R. Tolkien",
+        "Genre": "Fantasy"
+    },
+    {
+        "Title": "war And peace",
+        "Author": "Leo Tolstoy",
+        "Genre": "Novel"
+    },
+    {
+        "Title": "The Idiot",
+        "Author": "<em>Fiodor Dostoyevski</em>",
+        "Genre": "Novel"
+    },
+    {
+        "Title": "crime and punishment",
+        "Author": "Fiodor Dostoyevski",
+        "Genre": "Novel"
+    },
+    {
+        "Title": "The Art Of War",
+        "Author": "Sun Tzu",
+        "Genre": "Strategy"
+    },
+    {
+        "Title": "The Lord Of The Rings",
+        "Author": "J. R. R. Tolkien",
+        "Genre": "Fantasy"
+    },
+    {
+        "Title": "The Raven",
+        "Author": "Edgar Allan Poe",
+        "Genre": "Poetry"
+    },
+    {
+        "Title": "The Brothers Karamazov",
+        "Author": "Fiodor Dostoyevski",
+        "Genre": "Novel"
+    }
+]

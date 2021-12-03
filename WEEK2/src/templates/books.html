@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Βιβλία
+{% endblock title %}
+
+{% block content %}
+<ul>
+{% for book in jdict %}
+
+    {% if book.Genre == 'Novel' %}
+
+        <li>
+            Τίτλος: {{ book.Title | title }} <br>
+            Συγγραφέας: {{ book.Author | safe }} <br>
+            Είδος: {{ book.Genre }} <br>
+        </li>    <br>
+
+    {% endif %}
+
+{% endfor %}
+</ul>
+
+
+{% endblock content %}

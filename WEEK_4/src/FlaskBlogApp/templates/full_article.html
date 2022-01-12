@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    {{ article.article_title }}
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+<main role="main" class="container">
+
+{% if article %}
+
+        <div class="row my-3 p-3 bg-body rounded shadow-sm">
+          <div class="col col-md-12">
+            {% if article.article_image and article.article_image != 'default_article_image.jpg' %}
+              <img src="{{ url_for('static', filename='images/articles_images/'+article.article_image) }}" alt="" class="img-responsive a_image" width="100%">
+            {% endif %}
+          </div>
+          <div class="col col-md-12">
+            <div class="main-article-title">
+              {{ article.article_title | safe }}
+            </div>
+            <small class="article_date">[{{ article.date_created.strftime('%d-%m-%Y') }}]</small>
+
+
+          <div>
+            {% if article.author == current_user %}
+              <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{ url_for('edit_article', article_id=article.id) }}">Αλλαγή</a>
+              <button type="button" class="btn btn-danger btn-sm m-1" data-bs-toggle="modal" data-bs-target="#deleteModal">Διαγραφή</button>
+            {% endif %}
+          </div>
+
+
+
+            <p class="main-article-partial-text">
+              {{ article.article_body | safe }}
+            </p>
+            <p class="">Από 
+              <span>
+                <a class="author-name" href="{{ url_for('articles_by_author', author_id=article.author.id) }}"> {{ article.author.username }}
+                  <img class="rounded-circle profile-image" alt="{{ article.author.username }}" src="{{ url_for('static', filename='images/profiles_images/'+article.author.profile_image) }}" data-holder-rendered="true" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ article.author.username }}">
+                </a>
+              </span>
+            </p>
+          </div>
+        </div>
+
+{% endif %}
+
+
+</main>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Διαγραφή Άρθρου</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Είστε σίγουρος/η ότι θέλετε να διαγράψετε αυτό το άρθρο;
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Όχι</button>
+        <form action="{{ url_for('delete_article', article_id=article.id) }}" method="POST">
+            <input type="submit" class="btn btn-danger" value="Διαγραφή Άρθρου">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

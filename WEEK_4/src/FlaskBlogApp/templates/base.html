@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        {% block title %}
+        {% endblock title%}
+    </title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+
+    <img src="{{ url_for('static', filename='images/jumbotron.jpg') }}" width="100%" height="200px" class="img-responsive">
+
+    {% include "navbar.html" %}
+
+    <main role="main" class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message | safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+        {% block content %}
+
+        {% endblock content %}
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+    {% include "footer.html" %}
+</body>
+</html>

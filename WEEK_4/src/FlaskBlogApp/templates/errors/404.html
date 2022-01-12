@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Error 404: Page Not Found
+{% endblock title %}
+
+
+{% block content %}
+
+<div class="error_message">
+Error 404:  Η σελίδα που ζητήσατε δε βρέθηκε!
+</div>
+
+<img class="error_image" src="{{ url_for('static', filename='images/errors/404.png') }}" alt="">
+
+{% endblock content %}

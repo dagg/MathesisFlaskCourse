@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Νέο Άρθρο
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="container login-container">
+  <div class="row">
+    <div class="col-md-6 login-form-1">
+        <h3>{{ page_title }}</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+          {{ form.hidden_tag() }}
+
+          <div class="mb-3">
+            {{ form.article_title.label(class="form-label") }}
+            {{ form.article_title(class="form-control", required=False) }}
+            <div id="article_titleHelp" class="form-text">Παρακαλώ εισάγετε τον τίτλο του άρθρου.</div>
+            {% if form.article_title.errors %}
+              <ul class=errors>
+              {% for error in form.article_title.errors %}
+                <li class="alert text-danger">{{ error }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+
+
+          <div class="mb-3">
+            {{ form.article_body.label(class="form-label") }}
+            {{ form.article_body(class="form-control", rows="5", required=False) }}
+            <div id="article_bodyHelp" class="form-text">Παρακαλώ εισάγετε το πλήρες κείμενο του άρθρου.</div>
+            {% if form.article_body.errors %}
+              <ul class=errors>
+              {% for error in form.article_body.errors %}
+                <li class="alert text-danger">{{ error }}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+
+
+              <div class="mb-3">
+                {{ form.article_image.label(class="form-label") }}
+                {{ form.article_image(class="form-control") }}
+                <div id="article_imageHelp" class="form-text">Παρακαλώ δώστε μία εικόνα για το άρθρο σας.</div>
+                    {% if form.article_image.errors %}
+                    <ul class=errors>
+                    {% for error in form.article_image.errors %}
+                      <li class="alert text-danger">{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+              </div>
+
+
+          <div class="mb-3">
+              {{ form.submit(class="btn btn-primary") }}
+          </div>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

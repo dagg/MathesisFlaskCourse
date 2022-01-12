@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Λογαριασμός Χρήστη
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            
+            <h3>Φόρμα Ενημέρωσης Λογαριασμού</h3>
+
+            <img class="rounded-circle navbar-profile-image" src="{{ url_for('static', filename='images/profiles_images/'+current_user.profile_image) }}" alt="{{ current_user.username }}" data-holder-rendered="true" data-bs-toggle="tooltip" data-bs-placement="top", title="{{ current_user.username }}" >
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+                    {{ form.username.label(class="form-label") }}
+                    {{ form.username(class="form-control", required=False) }}
+                    <div id="usernameHelp" class="form-text">Παρακαλώ δώστε username</div>
+
+                    {% if form.username.errors %}
+                        <ul class="errors">
+                            {% for error in form.username.errors %}
+                                <li class="alert text-danger">
+                                    {{ error }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+
+              <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", required=False) }}
+                <div id="emailHelp" class="form-text">Παρακαλώ δώστε email.</div>
+                    {% if form.email.errors %}
+                    <ul class=errors>
+                    {% for error in form.email.errors %}
+                      <li class="alert text-danger">{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+              </div>
+
+
+
+              <div class="mb-3">
+                {{ form.profile_image.label(class="form-label") }}
+                {{ form.profile_image(class="form-control") }}
+                <div id="profile_imageHelp" class="form-text">Παρακαλώ δώστε μία εικόνα για το προφίλ σας.</div>
+                    {% if form.profile_image.errors %}
+                    <ul class=errors>
+                    {% for error in form.profile_image.errors %}
+                      <li class="alert text-danger">{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+              </div>
+
+
+                <div class="mb-3">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

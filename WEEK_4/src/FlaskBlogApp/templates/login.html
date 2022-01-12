@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Είσοδος
+{% endblock title %}
+
+
+{% block content %}
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Φόρμα Login</h3>
+
+            <form method="POST">
+                {{ form.csrf_token }}
+          
+              <div class="mb-3">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", required=False) }}
+                <div id="emailHelp" class="form-text">Παρακαλώ εισάγετε το email σας.</div>
+                    {% if form.email.errors %}
+                    <ul class=errors>
+                    {% for error in form.email.errors %}
+                      <li class="alert text-danger">{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+              </div>
+
+              <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(type="password", class="form-control", required=False) }}
+                <div id="passwordHelp" class="form-text">Παρακαλώ δώστε το password σας.</div>
+                    {% if form.password.errors %}
+                    <ul class=errors>
+                    {% for error in form.password.errors %}
+                      <li class="alert text-danger">{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+              </div>
+
+
+              <div>
+                {{ form.remember_me(class="form-check-input")}}
+                {{ form.remember_me.label(class="form-check-label") }}                    
+              </div class="form-check">
+
+              <br>
+
+              
+              <div class="mb-3">
+                {{ form.submit(class="btn btn-primary") }}
+              </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}

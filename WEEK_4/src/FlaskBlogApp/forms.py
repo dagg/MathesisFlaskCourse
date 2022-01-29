@@ -71,7 +71,7 @@ class LoginForm(FlaskForm):
 class NewArticleForm(FlaskForm):
     article_title = StringField(label="Τίτλος Άρθρου",
                            validators=[DataRequired(message="Αυτό το πεδίο δε μπορεί να είναι κενό."),
-                                       Length(min=3, max=50, message="Αυτό το πεδίο πρέπει να είναι από 3 έως 15 χαρακτήρες")])
+                                       Length(min=3, max=50, message="Αυτό το πεδίο πρέπει να είναι από 3 έως 50 χαρακτήρες")])
 
     article_body = TextAreaField(label="Κείμενο Άρθρου",
                            validators=[DataRequired(message="Αυτό το πεδίο δε μπορεί να είναι κενό."), 
